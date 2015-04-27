@@ -8,11 +8,11 @@
 using namespace std;
 
 enum Color{
-    BLANCO,
-    AZUL,
-    ROJO,
-    VERDE,
-    AMARILLO
+    WHITE,
+    BLUE,
+    RED,
+    GREEN,
+    YELLOW
 };
 
 class Calle
@@ -25,7 +25,7 @@ class Calle
         Calle();
         Calle(string nombre);
         string getNombre();
-        list<Calle*> getAdyacente();
+        list<Calle*> getAdyacentes();
         Color getGrupo();
         Calle* existe(string nombre);
         void agregarCalle(Calle* calle);

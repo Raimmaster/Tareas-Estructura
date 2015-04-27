@@ -6,14 +6,14 @@ Calle::Calle()
 
 Calle::Calle(string nombre){
     this->nombre = nombre;
-    this->grupo = BLANCO;
+    this->grupo = WHITE;
 }
 
 string Calle::getNombre(){
     return nombre;
 }
 
-list<Calle*> Calle::getAdyacente(){
+list<Calle*> Calle::getAdyacentes(){
     return adyacentes;
 }
 
