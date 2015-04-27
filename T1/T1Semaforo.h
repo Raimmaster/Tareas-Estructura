@@ -15,7 +15,10 @@ class T1Semaforo : public QDialog
         explicit T1Semaforo(QWidget *parent = 0);
         ~T1Semaforo();
 
-    private:
+private slots:
+    void on_bCheck_clicked();
+
+private:
         Ui::T1Semaforo *ui;
 };
 
