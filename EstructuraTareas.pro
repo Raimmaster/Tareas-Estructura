@@ -13,8 +13,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    T1/calle.cpp \
+    T1/T1Semaforo.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    T1/calle.h \
+    T1/T1Semaforo.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    T1/t1semaforo.ui
