@@ -9,7 +9,6 @@ const int CANT_CALLES = 13;
 //Prototyping
 void initCalles();
 void initAdyacentes();
-void initGrafo();
 
 //inits
 
