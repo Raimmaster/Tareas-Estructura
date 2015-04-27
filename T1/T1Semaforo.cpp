@@ -229,15 +229,4 @@ void T1Semaforo::on_bCheck_clicked()
 {
     colorearCalles();
     setQLabelColors();
-
-    for(int i = 0; i < CANT_CALLES; i++){
-        cout<<"Calle: "<<calles[i]->getNombre()<<endl<<"ADJ: "<<endl;
-        list<Calle*> temp = calles[i]->getAdyacentes();
-        for(list<Calle*>::iterator i = temp.begin();
-            i != temp.end(); i++){
-            cout<<"\t"<<(*i)->getNombre()<<endl;
-            cout<<(*i)->getGrupo()<<endl;
-        }
-    }
-    cout<<"FIN"<<endl;
 }
