@@ -13,6 +13,7 @@ class T1Semaforo : public QDialog
 
     public:
         explicit T1Semaforo(QWidget *parent = 0);
+        void setQLabelColors();
         ~T1Semaforo();
 
 private slots:
