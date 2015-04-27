@@ -12,18 +12,7 @@ void initCalles();
 void initAdyacentes();
 void initGrafo();
 
-
-T1Semaforo::T1Semaforo(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::T1Semaforo)
-{
-    ui->setupUi(this);
-}
-
-T1Semaforo::~T1Semaforo()
-{
-    delete ui;
-}
+//inits
 
 void init(){
     calles = new Calle*[CANT_CALLES];
@@ -114,6 +103,22 @@ void initGrafo(){
     }
 }
 
+
+//fin inits
+
+T1Semaforo::T1Semaforo(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::T1Semaforo)
+{
+    init();
+    ui->setupUi(this);
+}
+
+T1Semaforo::~T1Semaforo()
+{
+    delete ui;
+}
+
 void T1Semaforo::on_bCheck_clicked()
 {
     QPalette palette_colors;
@@ -122,12 +127,11 @@ void T1Semaforo::on_bCheck_clicked()
     ui->lAB->setAutoFillBackground(true);
     ui->lAB->setPalette(palette_colors);
 
-    init();
-
     for(int i = 0; i < CANT_CALLES; i++){
         cout<<"Calle: "<<calles[i]->getNombre()<<endl<<"ADJ: "<<endl;
-        for(list<Calle*>::iterator i = calles[i]->getAdyacente().begin();
-            i != calles[i]->getAdyacente().end(); i++){
+        list<Calle*> temp = calles[i]->getAdyacentes();
+        for(list<Calle*>::iterator i = temp.begin();
+            i != temp.end(); i++){
             cout<<(*i)->getNombre()<<endl;
         }
     }
