@@ -103,7 +103,6 @@ void initGrafo(){
     }
 }
 
-
 //fin inits
 
 T1Semaforo::T1Semaforo(QWidget *parent) :
@@ -119,20 +118,48 @@ T1Semaforo::~T1Semaforo()
     delete ui;
 }
 
+/**
+ * @brief todasColoreadas
+ * @return true si todas las calles están coloreadas
+ */
+bool todasColoreadas(){
+    for(int i = 0; i < CANT_CALLES; i++){
+        if(calles[i]->getGrupo() == WHITE)
+            return false;
+    }
+
+    return true;
+}
+
+/**
+ * @brief colorearCalles
+    Colorea las calles
+*/
+void colorearCalles(){
+    Color colorActual = BLUE;
+    list<Calle*> temp;//lista de calles
+    //que se están coloreando por el momento
+
+    while(!todasColoreadas()){
+        for(int i = 0; i < CANT_CALLES; i++){
+            if(calles[i]->getGrupo() == WHITE){
+
+            }
+        }
+        ++colorActual;
+    }
+}
+
 void T1Semaforo::on_bCheck_clicked()
 {
-    QPalette palette_colors;
-    palette_colors.setColor(QPalette::WindowText, Qt::blue);
-
-    ui->lAB->setAutoFillBackground(true);
-    ui->lAB->setPalette(palette_colors);
 
     for(int i = 0; i < CANT_CALLES; i++){
         cout<<"Calle: "<<calles[i]->getNombre()<<endl<<"ADJ: "<<endl;
         list<Calle*> temp = calles[i]->getAdyacentes();
         for(list<Calle*>::iterator i = temp.begin();
             i != temp.end(); i++){
-            cout<<(*i)->getNombre()<<endl;
+            cout<<"\t"<<(*i)->getNombre()<<endl;
+            cout<<(*i)->getGrupo()<<endl;
         }
     }
     cout<<"FIN"<<endl;

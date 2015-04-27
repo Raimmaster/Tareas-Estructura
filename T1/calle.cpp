@@ -38,3 +38,7 @@ void Calle::setNombre(string nombre){
     this->nombre = nombre;
 }
 
+void Calle::setGrupo(Color color){
+    this->grupo = color;
+}
+
