@@ -18,6 +18,8 @@ public:
 private slots:
     void on_bT1_clicked();
 
+    void on_bT2_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -15,11 +15,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     T1/calle.cpp \
-    T1/T1Semaforo.cpp
+    T1/T1Semaforo.cpp \
+    T2/t2cartas.cpp
 
 HEADERS  += mainwindow.h \
     T1/calle.h \
-    T1/T1Semaforo.h
+    T1/T1Semaforo.h \
+    T2/t2cartas.h
 
 FORMS    += mainwindow.ui \
-    T1/t1semaforo.ui
+    T1/t1semaforo.ui \
+    T2/t2cartas.ui
