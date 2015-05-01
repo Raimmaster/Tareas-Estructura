@@ -13,6 +13,10 @@ class T3ListadeArreglos : public QDialog
 
 public:
     explicit T3ListadeArreglos(QWidget *parent = 0);
+    bool append(int num);
+    int search(int num);
+    void clear();
+    bool insert(int pos, int num);
     ~T3ListadeArreglos();
 
 private:
