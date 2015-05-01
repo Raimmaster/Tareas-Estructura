@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "T1/T1Semaforo.h"
 #include "T2/t2cartas.h"
+#include "T3/T3ListadeArreglos.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -25,6 +26,13 @@ void MainWindow::on_bT1_clicked()
 void MainWindow::on_bT2_clicked()
 {
     T2Cartas t;
+    t.setModal(true);
+    t.exec();
+}
+
+void MainWindow::on_bT3_clicked()
+{
+    T3ListadeArreglos t;
     t.setModal(true);
     t.exec();
 }

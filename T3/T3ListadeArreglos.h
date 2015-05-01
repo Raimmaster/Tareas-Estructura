@@ -13,11 +13,23 @@ class T3ListadeArreglos : public QDialog
 
 public:
     explicit T3ListadeArreglos(QWidget *parent = 0);
-    bool append(int num);
-    int search(int num);
+    bool append(QString value);
+    int search(QString value);
     void clear();
-    bool insert(int pos, int num);
+    bool insert(int pos, QString value);
+    bool eliminar(int pos);
     ~T3ListadeArreglos();
+
+private slots:
+    void on_bAgregar_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_bBuscar_clicked();
+
+    void on_bEliminar_clicked();
+
+    void on_bInsertar_clicked();
 
 private:
     Ui::T3ListadeArreglos *ui;
