@@ -102,8 +102,7 @@ void initAdyacentes(){
 T1Semaforo::T1Semaforo(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::T1Semaforo)
-{
-    init();
+{    
     ui->setupUi(this);
 }
 
@@ -227,6 +226,12 @@ void T1Semaforo::setQLabelColors(){
 
 void T1Semaforo::on_bCheck_clicked()
 {
+    init();
     colorearCalles();
     setQLabelColors();
+
+    for(int i = 0; i < CANT_CALLES; i++)
+        delete calles[i];
+
+    delete [] calles;
 }
