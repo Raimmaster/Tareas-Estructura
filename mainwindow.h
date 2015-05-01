@@ -22,6 +22,8 @@ private slots:
 
     void on_bT3_clicked();
 
+    void on_bT3_2_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -3,5 +3,5 @@
 Cartas::Cartas(int num)
 {
     this->num = num;
-    this->siguiente = nullptr;
+    this->siguiente = NULL;
 }

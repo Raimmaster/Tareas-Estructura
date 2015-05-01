@@ -18,9 +18,18 @@ public:
     void eliminar(int pos);
     Cartas* getPos(int pos);
     Cartas* buscar(int num);
-    void insertar(int numero, int pos);
+    bool insertar(int numero, int pos);
 
     ~T4Apuntadores();
+
+private slots:
+    void on_bAgregar_clicked();
+
+    void on_bEliminar_clicked();
+
+    void on_bBuscar_clicked();
+
+    void on_bInsertar_clicked();
 
 private:
     Ui::T4Apuntadores *ui;

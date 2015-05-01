@@ -66,10 +66,8 @@ void T2Cartas::trim(){
 void T2Cartas::on_bQuitar_clicked()
 {
     if(!check){
-        std::cout<<"HOLA!"<<std::endl;
         ui->lwNew->clear();
         trim();
     }
     check = false;
-    //trim();
 }

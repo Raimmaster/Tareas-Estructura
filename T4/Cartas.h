@@ -1,5 +1,6 @@
 #ifndef CARTAS_H
 #define CARTAS_H
+#include "iostream"
 
 class Cartas
 {
