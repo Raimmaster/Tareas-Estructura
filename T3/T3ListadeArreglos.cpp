@@ -5,7 +5,7 @@
 
 const int SIZE = 15;
 QString arreglo[SIZE];
-int actual = 0;
+int actual = 0;//variable de control de cuantos elementos han sido agregados
 
 T3ListadeArreglos::T3ListadeArreglos(QWidget *parent) :
     QDialog(parent),
@@ -19,6 +19,11 @@ T3ListadeArreglos::~T3ListadeArreglos()
     delete ui;
 }
 
+/**
+ * @brief T3ListadeArreglos::append - Agrega el valor a la última posición posible
+ * @param value - Valor a agregar en la lista
+ * @return true si se ha podido agregar
+ */
 bool T3ListadeArreglos::append(QString value){
     if(actual < SIZE){
         arreglo[actual++] = value;
@@ -28,6 +33,11 @@ bool T3ListadeArreglos::append(QString value){
     return false;
 }
 
+/**
+ * @brief T3ListadeArreglos::search - Busca si el valor existe en la lista.
+ * @param value- El valor a buscar
+ * @return La posición en que se encuentra ese valor
+ */
 int T3ListadeArreglos::search(QString value){
     for(int i = 0; i < actual; i++){
         if(arreglo[i] == value)
@@ -37,6 +47,9 @@ int T3ListadeArreglos::search(QString value){
     return -1;
 }
 
+/**
+ * @brief T3ListadeArreglos::clear - Limpia toda la lista
+ */
 void T3ListadeArreglos::clear(){
     for(int i = 0; i < actual; i++){
         arreglo[i] = "0";
@@ -45,6 +58,12 @@ void T3ListadeArreglos::clear(){
     }
 }
 
+/**
+ * @brief T3ListadeArreglos::insert - Insertar el valor en la posición dada y desplaza los demás
+ * @param pos - Posición a insertar el valor
+ * @param value - Valor a insertar
+ * @return
+ */
 bool T3ListadeArreglos::insert(int pos, QString value){
     std::cout<<"Pos: "<<pos<<" - Actual: "<<actual<<std::endl;
 
@@ -60,6 +79,11 @@ bool T3ListadeArreglos::insert(int pos, QString value){
     return false;
 }
 
+/**
+ * @brief T3ListadeArreglos::eliminar - Elimina el valor en esa posición
+ * @param pos - Posición a eliminar
+ * @return true si se ha podido eliminar
+ */
 bool T3ListadeArreglos::eliminar(int pos){
     if(pos < actual){
         for(int i = pos; i < actual; i++){
