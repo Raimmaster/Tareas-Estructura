@@ -24,5 +24,5 @@ HEADERS  += mainwindow.h \
     T2/t2cartas.h
 
 FORMS    += mainwindow.ui \
-    T1/t1semaforo.ui \
+    T1/t1semaforo.ui \    
     T2/t2cartas.ui

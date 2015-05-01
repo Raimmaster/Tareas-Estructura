@@ -2,37 +2,31 @@
 #include "ui_t2cartas.h"
 #include <iostream>
 
-const int SIZE = 20;
-QString* oriList = new QString[SIZE];
-QString* newList = new QString[SIZE];
+const int SIZE = 15;
+bool check = false;
 
 T2Cartas::T2Cartas(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::T2Cartas)
 {
     ui->setupUi(this);
-    std::cout<<"IN!";
 }
 
 T2Cartas::~T2Cartas()
 {
     delete ui;
-    delete[] newList;
-    delete[] oriList;
 }
 
-/**
- * @brief T2Cartas::on_tValor_returnPressed
- * Ingresa el valor en la lista original cuando se presiona enter
- */
 void T2Cartas::on_tValor_returnPressed()
 {
     if(cantItems < SIZE){
-        QString newValue = ui->tValor->displayText();
-        ui->lwOriginal->addItem(newValue);
-        ui->tValor->clear();
-        std::cout<<cantItems<<std::endl;
-        oriList[cantItems++] = newValue;
+           QString newValue = ui->tValor->displayText();
+           //ui->lwOriginal->addItem(newValue);
+           ui->lwOriginal->insertItem(cantItems, newValue);
+           ui->tValor->clear();
+           oriList[cantItems++] = newValue;
+           check = true;
+           return;
     }
 }
 
@@ -60,8 +54,8 @@ void T2Cartas::trim(){
             newList[currentInsert++] = oriList[i];
     }
 
-    delete [] oriList;//eliminar espacio de memoria
-    oriList = new QString[currentInsert];//reinstanciar arreglo
+    //delete [] oriList;//eliminar espacio de memoria
+    //oriList = new QString[currentInsert];//reinstanciar arreglo
     oriList[currentInsert];
     for(int i = 0; i < currentInsert; i++){
         oriList[i] = newList[i];
@@ -69,7 +63,13 @@ void T2Cartas::trim(){
     }
 }
 
-void T2Cartas::on_bEliminarDuplicados_clicked()
+void T2Cartas::on_bQuitar_clicked()
 {
-    trim();
+    if(!check){
+        std::cout<<"HOLA!"<<std::endl;
+        ui->lwNew->clear();
+        trim();
+    }
+    check = false;
+    //trim();
 }
