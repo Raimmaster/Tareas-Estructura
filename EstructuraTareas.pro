@@ -16,13 +16,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     T1/calle.cpp \
     T1/T1Semaforo.cpp \
-    T2/t2cartas.cpp
+    T2/t2cartas.cpp \
+    T3/T3ListadeArreglos.cpp
 
 HEADERS  += mainwindow.h \
     T1/calle.h \
     T1/T1Semaforo.h \
-    T2/t2cartas.h
+    T2/t2cartas.h \
+    T3/T3ListadeArreglos.h
 
 FORMS    += mainwindow.ui \
     T1/t1semaforo.ui \    
-    T2/t2cartas.ui
+    T2/t2cartas.ui \
+    T3/T3ListadeArreglos.ui
