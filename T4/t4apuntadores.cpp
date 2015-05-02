@@ -2,7 +2,7 @@
 #include "ui_t4apuntadores.h"
 #include <QMessageBox>
 
-Cartas* inicio, *final;
+Cartas* inicio = NULL, *final = NULL;
 int size_lista = 0;
 
 T4Apuntadores::T4Apuntadores(QWidget *parent) :
@@ -28,7 +28,6 @@ void T4Apuntadores::agregar(int num){
         final = inicio;
         return;
     }
-
     final->siguiente = new Cartas(num);
     final = final->siguiente;
 }
@@ -53,9 +52,11 @@ Cartas* T4Apuntadores::buscar(int num){
         if(num == temp->num)
             return temp;
 
+        std::cout<<temp->num<<std::endl;
+
         temp = temp->siguiente;
     }
-
+    std::cout<<"OUT!"<<std::endl;
     return NULL;
 }
 
@@ -65,7 +66,10 @@ void T4Apuntadores::eliminar(int pos){
     if(pos >= -1 && pos < size_lista - 1){
         if(pos == -1){//borrar el inicio
             temp = inicio;
-            inicio = inicio->siguiente;
+            if(size_lista == 1)
+                inicio = NULL;
+            else
+                inicio = inicio->siguiente;
             delete temp;
         }else if (pos == size_lista - 2){//borrar el final
             temp = getPos(pos);
@@ -110,13 +114,14 @@ bool T4Apuntadores::insertar(int numero, int pos){
 void T4Apuntadores::on_bAgregar_clicked()
 {
     QString q = ui->lValor->text();
-    ui->lValor->clear();
 
     if(!q.isEmpty()){
         int num = ui->lValor->text().toInt();
         agregar(num);
         ui->listWidget->addItem(q);
     }
+
+    ui->lValor->clear();
 }
 
 void T4Apuntadores::on_bEliminar_clicked()
@@ -132,7 +137,8 @@ void T4Apuntadores::on_bBuscar_clicked()
     int num = ui->lValor->text().toInt();
     Cartas* temp = buscar(num);
     QMessageBox qMes;
-    if(!temp)
+
+    if(temp != NULL)
         qMes.setText("Existe");
     else
         qMes.setText("No existe");
