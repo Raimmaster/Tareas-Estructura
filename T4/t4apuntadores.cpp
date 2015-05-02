@@ -21,6 +21,10 @@ Cartas* T4Apuntadores::getFinal(){
     return final;
 }
 
+/**
+ * @brief T4Apuntadores::agregar - Agrega al final de la lista
+ * @param num - Número a agregar a la lista
+ */
 void T4Apuntadores::agregar(int num){
     size_lista++;
     if(!inicio){
@@ -32,6 +36,11 @@ void T4Apuntadores::agregar(int num){
     final = final->siguiente;
 }
 
+/**
+ * @brief T4Apuntadores::getPos - Devuelve un apuntador a la posición especificada
+ * @param pos Posición a obtener
+ * @return Carta* de la posición
+ */
 Cartas* T4Apuntadores::getPos(int pos){
     if(pos >= 0 && pos < size_lista){
         if(pos == size_lista - 1)
@@ -46,6 +55,11 @@ Cartas* T4Apuntadores::getPos(int pos){
     }
 }
 
+/**
+ * @brief T4Apuntadores::buscar - Buscar si existe el objeto en la lista
+ * @param num - Número de carta a buscar
+ * @return Carta* si el número se encuentra
+ */
 Cartas* T4Apuntadores::buscar(int num){
     Cartas* temp = inicio;
     for(int i = 0; i < size_lista; i++){
@@ -60,6 +74,10 @@ Cartas* T4Apuntadores::buscar(int num){
     return NULL;
 }
 
+/**
+ * @brief T4Apuntadores::eliminar - Elimina la carta de la lista
+ * @param pos - Posición a eliminar
+ */
 void T4Apuntadores::eliminar(int pos){
     pos--;
     Cartas* temp = NULL;
@@ -86,6 +104,12 @@ void T4Apuntadores::eliminar(int pos){
     }
 }
 
+/**
+ * @brief T4Apuntadores::insertar - Inserta una carta en la posición dada
+ * @param numero - Número de carta a insertar
+ * @param pos - Posición donde insertar
+ * @return - True si se logró insertar
+ */
 bool T4Apuntadores::insertar(int numero, int pos){
     if(pos >= 0 && pos < size_lista){
         if(pos == 0){
