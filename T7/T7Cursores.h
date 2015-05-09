@@ -25,7 +25,8 @@ class T7Cursores : public QDialog
         int buscar(int lista, char c);
         void insertar(int lista, int pos, char c);
         int getAnterior(int lista, int pos);
-        void eliminar(int lista, int pos);
+        void agregarEspacio(int pos);//parámetro es la posición a vaciar
+        void eliminar(int lista, char c);
 
         explicit T7Cursores(QWidget *parent = 0);
         ~T7Cursores();

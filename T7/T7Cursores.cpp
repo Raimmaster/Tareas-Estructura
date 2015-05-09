@@ -138,17 +138,49 @@ void T7Cursores::insertar(int lista, int pos, char c){
     }
 }
 
-int T7Cursores::getAnterior(int lista, int pos){
-
+/**
+ * @brief T7Cursores::agregarEspacio - Elimina el espacio y lo agrega a la lista de disponibles
+ * @param pos - Posición a eliminar
+ */
+void T7Cursores::agregarEspacio(int pos){
+    int currentLibre = inicios[0];
+    espacios[currentLibre].siguiente = pos;
+    espacios[pos].siguiente = -1;
 }
 
-void T7Cursores::eliminar(int lista, int pos){
-    int actual = buscar(lista, pos);
-    if(actual == inicios[lista]){
-        agregar(actual, 0);
-        inicios[lista] = espacios[actual].siguiente;
-        espacios[actual].siguiente = -1;
-    }else if(espacios[actual].siguiente == -1){
+/**
+ * @brief T7Cursores::getAnterior - Obtiene el objeto anterior al que tenemos
+ * @param lista - Indice de lista donde buscar
+ * @param pos - Posicion actual
+ * @return int de la posición anterior al actual
+ */
+int T7Cursores::getAnterior(int lista, int pos){
+    int begLista = inicios[lista];
 
+    while(espacios[begLista].siguiente != pos)
+        begLista = espacios[begLista].siguiente;
+
+    return begLista;
+}
+
+/**
+ * @brief T7Cursores::eliminar - Elimina un objeto de la lista
+ * @param lista - lista de donde eliminar
+ * @param c - Valor a eliminar
+ */
+void T7Cursores::eliminar(int lista, char c){
+    int actual = buscar(lista, c);
+    if(actual != -1){//comparar que el objeto exista
+        if(actual == inicios[lista]){//si es el inicio, cambiar
+            inicios[lista] = espacios[actual].siguiente;
+        }else{//sino, comparar el resto de casos
+            int anterior = getAnterior(lista, actual);
+            if(espacios[actual].siguiente == -1)//si es el final
+                espacios[anterior].siguiente = -1;
+            else{//si está en el medio
+                espacios[anterior].siguiente = espacios[actual].siguiente;
+            }
+        }
+        agregarEspacio(actual);
     }
 }
