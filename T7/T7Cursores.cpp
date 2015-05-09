@@ -5,6 +5,8 @@
 
 using namespace std;
 
+QString valores[10];
+
 /**
  * @brief T7Cursores::inicializar - Ejecuta los métodos necesarios para inicializar las listas
  */
@@ -43,6 +45,14 @@ T7Cursores::T7Cursores(QWidget *parent) :
 {
     inicializar();
     ui->setupUi(this);
+    initValores();
+}
+
+void T7Cursores::initValores(){
+    for(int i = 0; i < SIZE_LISTAS; i++){
+        valores[i] = "_ ";
+        ui->lListas->setText(ui->lListas->text() + valores[i]);
+    }
 }
 
 T7Cursores::~T7Cursores()
@@ -67,7 +77,7 @@ int T7Cursores::getInicioVacio(){
  * @brief T7Cursores::crearLista - Crea una nueva lista
  * @param c
  */
-bool T7Cursores::crearLista(char c){
+bool T7Cursores::crearLista(QString c){
     int disponible = inicios[0];
     int newInicioPos = getInicioVacio();
 
@@ -77,7 +87,8 @@ bool T7Cursores::crearLista(char c){
 
         espacios[disponible].siguiente = -1;
         espacios[disponible].valor = c;
-
+        //Agregar al QLabel de Listas y su QString[]
+        valores[disponible] = c + " ";
         return true;
     }
 
@@ -89,7 +100,7 @@ bool T7Cursores::crearLista(char c){
  * @param lista - número de la lista
  * @param c - Caracter a ingresar en el primer espacio posible de la lista
  */
-bool T7Cursores::agregar(int lista, char c){
+bool T7Cursores::agregar(int lista, QString c){
     if(inicios[0] != -1){
         int x = inicios[lista];
         while(espacios[x].siguiente != -1)
@@ -102,13 +113,15 @@ bool T7Cursores::agregar(int lista, char c){
         inicios[0] = espacios[y].siguiente;
         espacios[y].siguiente = -1;
 
+        //Actualizar valores
+        valores[x] = c + " ";
         return true;
     }
 
     return false;
 }
 
-int  T7Cursores::buscar(int lista, char c){
+int  T7Cursores::buscar(int lista, QString c){
     if(inicios[lista] != -1){
         int x = inicios[lista];
         while(espacios[x].valor != c && espacios[x].siguiente != -1)
@@ -126,7 +139,7 @@ int  T7Cursores::buscar(int lista, char c){
  * @param pos - Posición donde insertar
  * @param c - Valor a insertar
  */
-bool T7Cursores::insertar(int lista, int pos, char c){
+bool T7Cursores::insertar(int lista, int pos, QString c){
     int x = inicios[0];
     if (x == -1)//Si está llena, simplemente retornar false
         return false;
@@ -134,7 +147,7 @@ bool T7Cursores::insertar(int lista, int pos, char c){
     if(pos >= 0 && pos < SIZE_LISTAS){
         if(pos == inicios[lista] && espacios[pos].siguiente == -1){
             inicios[0] = espacios[x].siguiente;//le setteamos el siguiente del espacio disponible actual
-            espacios[x].valor = c; //en este espacio agregamos el valor
+            espacios[x].valor = c; //en este espacio agregamos el valor            
             espacios[x].siguiente = inicios[lista];//le damos como siguiente el inicio de la lista
             inicios[lista] = x;//y setteamos como el inicio la posición del nuevo
         }else if(espacios[pos].siguiente == -1)//si el siguiente de la posición a ingresar es -1, entonces agregar
@@ -146,8 +159,12 @@ bool T7Cursores::insertar(int lista, int pos, char c){
             espacios[pos].siguiente = x;
         }
 
+        //Actualizar valores
+        valores[x] = c;
         return true;
     }
+
+    return false;
 }
 
 /**
@@ -180,7 +197,7 @@ int T7Cursores::getAnterior(int lista, int pos){
  * @param lista - lista de donde eliminar
  * @param c - Valor a eliminar
  */
-void T7Cursores::eliminar(int lista, char c){
+bool T7Cursores::eliminar(int lista, QString c){
     int actual = buscar(lista, c);
     if(actual != -1){//comparar que el objeto exista
         if(actual == inicios[lista]){//si es el inicio, cambiar
@@ -193,6 +210,38 @@ void T7Cursores::eliminar(int lista, char c){
                 espacios[anterior].siguiente = espacios[actual].siguiente;
             }
         }
+
+        valores[actual] = "_ ";
         agregarEspacio(actual);
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * @brief T7Cursores::actualizarLabelListas
+ * Actualiza el lListas con los valores actuales
+ */
+void T7Cursores::actualizarLabelListas(){
+    ui->lListas->clear();
+    for(int i = 0; i < SIZE_LISTAS; i++)
+        ui->lListas->setText(ui->lListas->text() + valores[i]);
+}
+
+void T7Cursores::on_bCrear_clicked()
+{
+    QString q = ui->lValor->text();
+    ui->lValor->text().clear();
+
+    if(q.isEmpty())
+        return;
+
+    if(crearLista(q))
+        actualizarLabelListas();
+    else{
+        QMessageBox qM;
+        qM.setText("Ya no hay espacio.");
+        qM.exec();
     }
 }

@@ -20,18 +20,23 @@ class T7Cursores : public QDialog
         void initEspacios();//init de la lista que contendrá las listas
         void initInicios();//init de la lista que contendrá donde empieza cada lista
         int getInicioVacio();
-        bool crearLista(char c);
-        bool agregar(int lista, char c);
-        int buscar(int lista, char c);
-        bool insertar(int lista, int pos, char c);
+        bool crearLista(QString c);
+        bool agregar(int lista, QString c);
+        int buscar(int lista, QString c);
+        bool insertar(int lista, int pos, QString c);
         int getAnterior(int lista, int pos);
         void agregarEspacio(int pos);//parámetro es la posición a vaciar
-        void eliminar(int lista, char c);
-
+        bool eliminar(int lista, QString c);
+        //FUNCIONES RELACIONADAS AL FORM
+        void initValores();
+        void actualizarLabelListas();
         explicit T7Cursores(QWidget *parent = 0);
         ~T7Cursores();
 
-    private:
+private slots:
+        void on_bCrear_clicked();
+
+private:
         Ui::T7Cursores *ui;
 };
 
