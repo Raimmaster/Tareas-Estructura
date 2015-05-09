@@ -20,10 +20,10 @@ class T7Cursores : public QDialog
         void initEspacios();//init de la lista que contendrá las listas
         void initInicios();//init de la lista que contendrá donde empieza cada lista
         int getInicioVacio();
-        void crearLista(char c);
-        void agregar(int lista, char c);
+        bool crearLista(char c);
+        bool agregar(int lista, char c);
         int buscar(int lista, char c);
-        void insertar(int lista, int pos, char c);
+        bool insertar(int lista, int pos, char c);
         int getAnterior(int lista, int pos);
         void agregarEspacio(int pos);//parámetro es la posición a vaciar
         void eliminar(int lista, char c);

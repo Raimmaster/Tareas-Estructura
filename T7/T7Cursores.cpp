@@ -67,7 +67,7 @@ int T7Cursores::getInicioVacio(){
  * @brief T7Cursores::crearLista - Crea una nueva lista
  * @param c
  */
-void T7Cursores::crearLista(char c){
+bool T7Cursores::crearLista(char c){
     int disponible = inicios[0];
     int newInicioPos = getInicioVacio();
 
@@ -77,7 +77,11 @@ void T7Cursores::crearLista(char c){
 
         espacios[disponible].siguiente = -1;
         espacios[disponible].valor = c;
+
+        return true;
     }
+
+    return false;
 }
 
 /**
@@ -85,7 +89,7 @@ void T7Cursores::crearLista(char c){
  * @param lista - número de la lista
  * @param c - Caracter a ingresar en el primer espacio posible de la lista
  */
-void T7Cursores::agregar(int lista, char c){
+bool T7Cursores::agregar(int lista, char c){
     if(inicios[0] != -1){
         int x = inicios[lista];
         while(espacios[x].siguiente != -1)
@@ -97,7 +101,11 @@ void T7Cursores::agregar(int lista, char c){
 
         inicios[0] = espacios[y].siguiente;
         espacios[y].siguiente = -1;
+
+        return true;
     }
+
+    return false;
 }
 
 int  T7Cursores::buscar(int lista, char c){
@@ -118,8 +126,11 @@ int  T7Cursores::buscar(int lista, char c){
  * @param pos - Posición donde insertar
  * @param c - Valor a insertar
  */
-void T7Cursores::insertar(int lista, int pos, char c){
+bool T7Cursores::insertar(int lista, int pos, char c){
     int x = inicios[0];
+    if (x == -1)//Si está llena, simplemente retornar false
+        return false;
+
     if(pos >= 0 && pos < SIZE_LISTAS){
         if(pos == inicios[lista] && espacios[pos].siguiente == -1){
             inicios[0] = espacios[x].siguiente;//le setteamos el siguiente del espacio disponible actual
@@ -135,6 +146,7 @@ void T7Cursores::insertar(int lista, int pos, char c){
             espacios[pos].siguiente = x;
         }
 
+        return true;
     }
 }
 
