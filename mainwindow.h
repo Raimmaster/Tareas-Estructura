@@ -28,6 +28,8 @@ private slots:
 
     void on_bT5_clicked();
 
+    void on_bT7_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

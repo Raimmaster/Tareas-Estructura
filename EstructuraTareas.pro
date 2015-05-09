@@ -24,7 +24,7 @@ SOURCES += main.cpp\
     T6/Nodo.cpp \
     T5/T5Colas.cpp \
     T7/T7Cursores.cpp \
-    T7/Nodo.cpp
+    T7/CNodo.cpp
 
 HEADERS  += mainwindow.h \
     T1/calle.h \
@@ -37,7 +37,7 @@ HEADERS  += mainwindow.h \
     T6/Nodo.h \
     T5/T5Colas.h \
     T7/T7Cursores.h \
-    T7/Nodo.h
+    T7/CNodo.h
 
 FORMS    += mainwindow.ui \
     T1/t1semaforo.ui \    
