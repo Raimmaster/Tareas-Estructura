@@ -229,19 +229,95 @@ void T7Cursores::actualizarLabelListas(){
         ui->lListas->setText(ui->lListas->text() + valores[i]);
 }
 
-void T7Cursores::on_bCrear_clicked()
-{
+QString T7Cursores::obtenerValor(){
     QString q = ui->lValor->text();
     ui->lValor->text().clear();
+
+    return q;
+}
+
+void T7Cursores::showFullMsg(){
+    QMessageBox qM;
+    qM.setText("Ya no hay espacio.");
+    qM.exec();
+}
+
+void T7Cursores::on_bCrear_clicked()
+{
+    QString q = obtenerValor();
 
     if(q.isEmpty())
         return;
 
     if(crearLista(q))
         actualizarLabelListas();
-    else{
-        QMessageBox qM;
-        qM.setText("Ya no hay espacio.");
-        qM.exec();
-    }
+    else
+        showFullMsg();
+}
+
+void T7Cursores::on_bAgregar_clicked()
+{
+    QString q = obtenerValor();
+    if(q.isEmpty() || ui->tLista->text().isEmpty())
+        return;
+
+    int lista = ui->tLista->text.toInt();
+    ui->tLista->clear();
+
+    if(agregar(lista, q))
+        actualizarLabelListas();
+    else
+        showFullMsg();
+}
+
+void T7Cursores::on_bInsertar_clicked()
+{
+    QString q = obtenerValor();
+
+    if(q.isEmpty() || ui->tLista->text().isEmpty() || ui->tPosicion->text.isEmpty())
+        return;
+
+    int pos = ui->tPosicion->text.toInt();
+    ui->tPosicion->clear();
+
+    int lista = ui->tLista->text.toInt();
+    ui->tLista->clear();
+
+    if(insertar(lista, pos, q))
+        actualizarLabelListas();
+    else
+        showFullMsg();
+}
+
+void T7Cursores::on_bEliminar_clicked()
+{
+    QString q = obtenerValor();
+
+    if(q.isEmpty() || ui->tLista->text().isEmpty())
+        return;
+
+    int lista = ui->tLista->text.toInt();
+    ui->tLista->clear();
+
+    if(eliminar(lista, q))
+        actualizarLabelListas();
+}
+
+void T7Cursores::on_pushButton_5_clicked()
+{
+    QString q = obtenerValor();
+
+    if(q.isEmpty() || ui->tLista->text().isEmpty())
+        return;
+
+    int lista = ui->tLista->text.toInt();
+    ui->tLista->clear();
+
+    QMessageBox qM;
+    if(buscar(lista, q) != -1)
+        qM.setText("El valor existe en la lista.");
+    else
+        qM.setText("El valor no existe en la lista.");
+
+    qM.exec();
 }

@@ -30,11 +30,20 @@ class T7Cursores : public QDialog
         //FUNCIONES RELACIONADAS AL FORM
         void initValores();
         void actualizarLabelListas();
+        QString obtenerValor();
+        void showFullMsg();
+
         explicit T7Cursores(QWidget *parent = 0);
         ~T7Cursores();
 
 private slots:
         void on_bCrear_clicked();
+
+        void on_bAgregar_clicked();
+
+        void on_bInsertar_clicked();
+
+        void on_bEliminar_clicked();
 
 private:
         Ui::T7Cursores *ui;
