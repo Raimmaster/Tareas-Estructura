@@ -261,7 +261,7 @@ void T7Cursores::on_bAgregar_clicked()
     if(q.isEmpty() || ui->tLista->text().isEmpty())
         return;
 
-    int lista = ui->tLista->text.toInt();
+    int lista = ui->tLista->text().toInt();
     ui->tLista->clear();
 
     if(agregar(lista, q))
@@ -274,13 +274,13 @@ void T7Cursores::on_bInsertar_clicked()
 {
     QString q = obtenerValor();
 
-    if(q.isEmpty() || ui->tLista->text().isEmpty() || ui->tPosicion->text.isEmpty())
+    if(q.isEmpty() || ui->tLista->text().isEmpty() || ui->tPosicion->text().isEmpty())
         return;
 
-    int pos = ui->tPosicion->text.toInt();
+    int pos = ui->tPosicion->text().toInt();
     ui->tPosicion->clear();
 
-    int lista = ui->tLista->text.toInt();
+    int lista = ui->tLista->text().toInt();
     ui->tLista->clear();
 
     if(insertar(lista, pos, q))
@@ -296,7 +296,7 @@ void T7Cursores::on_bEliminar_clicked()
     if(q.isEmpty() || ui->tLista->text().isEmpty())
         return;
 
-    int lista = ui->tLista->text.toInt();
+    int lista = ui->tLista->text().toInt();
     ui->tLista->clear();
 
     if(eliminar(lista, q))
@@ -310,7 +310,7 @@ void T7Cursores::on_pushButton_5_clicked()
     if(q.isEmpty() || ui->tLista->text().isEmpty())
         return;
 
-    int lista = ui->tLista->text.toInt();
+    int lista = ui->tLista->text().toInt();
     ui->tLista->clear();
 
     QMessageBox qM;

@@ -45,6 +45,8 @@ private slots:
 
         void on_bEliminar_clicked();
 
+        void on_pushButton_5_clicked();
+
 private:
         Ui::T7Cursores *ui;
 };
