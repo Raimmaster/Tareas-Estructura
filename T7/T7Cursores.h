@@ -14,7 +14,7 @@ class T7Cursores : public QDialog
 
     public:
         const static int SIZE_LISTAS = 10;
-        CNodo espacios[10];
+        CNodo espacios[SIZE_LISTAS];
         int inicios[SIZE_LISTAS];
         void inicializar();
         void initEspacios();//init de la lista que contendrá las listas
@@ -23,8 +23,8 @@ class T7Cursores : public QDialog
         void crearLista(char c);
         void agregar(int lista, char c);
         int buscar(int lista, int pos);
-        int getAnterior(int lista, int pos);
         void insertar(int lista, int pos, char c);
+        int getAnterior(int lista, int pos);
         void eliminar(int lista, int pos);
 
         explicit T7Cursores(QWidget *parent = 0);

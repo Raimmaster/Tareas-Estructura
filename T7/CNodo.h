@@ -7,7 +7,6 @@ public:
     char valor;
     int siguiente;
     CNodo();
-    CNodo(char valor, int siguiente);
 };
 
 #endif // CNODO_H
