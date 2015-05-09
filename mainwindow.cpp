@@ -4,6 +4,8 @@
 #include "T2/t2cartas.h"
 #include "T3/T3ListadeArreglos.h"
 #include "T4/t4apuntadores.h"
+#include "T5/T5Colas.h"
+#include "T6/T6Pilas.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -38,9 +40,24 @@ void MainWindow::on_bT3_clicked()
     t.exec();
 }
 
-void MainWindow::on_bT3_2_clicked()
+void MainWindow::on_bT4_clicked()
 {
     T4Apuntadores t;
+    t.setModal(true);
+    t.exec();
+}
+
+void MainWindow::on_bT6_clicked()
+{
+
+    T6Pilas t;
+    t.setModal(true);
+    t.exec();
+}
+
+void MainWindow::on_bT5_clicked()
+{
+    T5Colas t;
     t.setModal(true);
     t.exec();
 }

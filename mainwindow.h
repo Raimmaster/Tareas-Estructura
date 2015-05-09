@@ -22,7 +22,11 @@ private slots:
 
     void on_bT3_clicked();
 
-    void on_bT3_2_clicked();
+    void on_bT4_clicked();
+
+    void on_bT6_clicked();
+
+    void on_bT5_clicked();
 
 private:
     Ui::MainWindow *ui;
