@@ -115,6 +115,20 @@ int  T7Cursores::buscar(int lista, char c){
 void T7Cursores::insertar(int lista, int pos, char c){
     int x = inicios[0];
     if(pos >= 0 && pos < SIZE_LISTAS){
+        if(pos == inicios[lista] && espacios[pos].siguiente == -1){
+            inicios[0] = espacios[x].siguiente;
+            espacios[x].valor = c;
+            espacios[x].siguiente = inicios[lista];
+            inicios[lista] = x;
+            cout<<"TEST";
+        }else if(espacios[pos].siguiente == -1)
+            agregar(lista, c);
+        else{
+            inicios[0] = espacios[x].siguiente;
+            espacios[x].valor = c;
+            espacios[x].siguiente = espacios[pos].siguiente;
+            espacios[pos].siguiente = x;
+        }
 
     }
 }
