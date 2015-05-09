@@ -22,7 +22,9 @@ SOURCES += main.cpp\
     T4/Cartas.cpp \
     T6/T6Pilas.cpp \
     T6/Nodo.cpp \
-    T5/T5Colas.cpp
+    T5/T5Colas.cpp \
+    T7/T7Cursores.cpp \
+    T7/Nodo.cpp
 
 HEADERS  += mainwindow.h \
     T1/calle.h \
@@ -33,7 +35,9 @@ HEADERS  += mainwindow.h \
     T4/Cartas.h \
     T6/T6Pilas.h \
     T6/Nodo.h \
-    T5/T5Colas.h
+    T5/T5Colas.h \
+    T7/T7Cursores.h \
+    T7/Nodo.h
 
 FORMS    += mainwindow.ui \
     T1/t1semaforo.ui \    
@@ -41,4 +45,5 @@ FORMS    += mainwindow.ui \
     T3/T3ListadeArreglos.ui \
     T4/t4apuntadores.ui \
     T6/T6Pilas.ui \
-    T5/T5Colas.ui
+    T5/T5Colas.ui \
+    T7/T7Cursores.ui
