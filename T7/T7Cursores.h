@@ -14,7 +14,8 @@ class T7Cursores : public QDialog
 
 public:
     const int SIZE_LISTAS = 10;
-    Nodo espacios[SIZE_LISTAS], inicios[SIZE_LISTAS];
+    Nodo espacios[SIZE_LISTAS];
+    int inicios[SIZE_LISTAS];
     void inicializar();
     void initEspacios();//init de la lista que contendrá las listas
     void initInicios();//init de la lista que contendrá donde empieza cada lista
