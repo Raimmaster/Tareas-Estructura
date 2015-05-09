@@ -112,23 +112,43 @@ int  T7Cursores::buscar(int lista, char c){
     return -1;
 }
 
+/**
+ * @brief T7Cursores::insertar - Inserta un valor en el espacio indicado
+ * @param lista - Lista donde insertar
+ * @param pos - Posición donde insertar
+ * @param c - Valor a insertar
+ */
 void T7Cursores::insertar(int lista, int pos, char c){
     int x = inicios[0];
     if(pos >= 0 && pos < SIZE_LISTAS){
         if(pos == inicios[lista] && espacios[pos].siguiente == -1){
-            inicios[0] = espacios[x].siguiente;
-            espacios[x].valor = c;
-            espacios[x].siguiente = inicios[lista];
-            inicios[lista] = x;
-            cout<<"TEST";
-        }else if(espacios[pos].siguiente == -1)
+            inicios[0] = espacios[x].siguiente;//le setteamos el siguiente del espacio disponible actual
+            espacios[x].valor = c; //en este espacio agregamos el valor
+            espacios[x].siguiente = inicios[lista];//le damos como siguiente el inicio de la lista
+            inicios[lista] = x;//y setteamos como el inicio la posición del nuevo
+        }else if(espacios[pos].siguiente == -1)//si el siguiente de la posición a ingresar es -1, entonces agregar
             agregar(lista, c);
-        else{
+        else{//no es el inicio, ni es el final
             inicios[0] = espacios[x].siguiente;
             espacios[x].valor = c;
             espacios[x].siguiente = espacios[pos].siguiente;
             espacios[pos].siguiente = x;
         }
+
+    }
+}
+
+int T7Cursores::getAnterior(int lista, int pos){
+
+}
+
+void T7Cursores::eliminar(int lista, int pos){
+    int actual = buscar(lista, pos);
+    if(actual == inicios[lista]){
+        agregar(actual, 0);
+        inicios[lista] = espacios[actual].siguiente;
+        espacios[actual].siguiente = -1;
+    }else if(espacios[actual].siguiente == -1){
 
     }
 }

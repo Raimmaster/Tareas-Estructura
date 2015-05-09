@@ -22,7 +22,7 @@ class T7Cursores : public QDialog
         int getInicioVacio();
         void crearLista(char c);
         void agregar(int lista, char c);
-        int buscar(int lista, int pos);
+        int buscar(int lista, char c);
         void insertar(int lista, int pos, char c);
         int getAnterior(int lista, int pos);
         void eliminar(int lista, int pos);
