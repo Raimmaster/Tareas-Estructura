@@ -126,11 +126,12 @@ bool T7Cursores::agregar(int lista, QString c){
 
 int  T7Cursores::buscar(int lista, QString c){
     if(inicios[lista] != -1){
-        int x = inicios[lista];
+        int x = inicios[lista];//posición inicial de la lista
         while(espacios[x].valor != c && espacios[x].siguiente != -1)
             x = espacios[x].siguiente;
 
-        return x;
+        if(espacios[x].valor == c)
+            return x;
     }
 
     return -1;
@@ -176,8 +177,9 @@ bool T7Cursores::insertar(int lista, int pos, QString c){
  */
 void T7Cursores::agregarEspacio(int pos){
     int currentLibre = inicios[0];
-    espacios[currentLibre].siguiente = pos;
-    espacios[pos].siguiente = -1;
+    inicios[0] = pos;
+    espacios[pos].siguiente = currentLibre;
+    cout<<"Espacio libre: "<<pos<<" ahora seguido por: "<<currentLibre<<endl;
 }
 
 /**
@@ -234,7 +236,7 @@ void T7Cursores::actualizarLabelListas(){
 
 QString T7Cursores::obtenerValor(){
     QString q = ui->lValor->text();
-    ui->lValor->text().clear();
+    ui->lValor->clear();
 
     return q;
 }
