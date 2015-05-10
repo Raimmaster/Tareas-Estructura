@@ -32,7 +32,8 @@ class T7Cursores : public QDialog
         void actualizarLabelListas();
         QString obtenerValor();
         void showFullMsg();
-
+        bool validarListaDisponibles();
+        void printPruebas();
         explicit T7Cursores(QWidget *parent = 0);
         ~T7Cursores();
 

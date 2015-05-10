@@ -79,6 +79,9 @@ int T7Cursores::getInicioVacio(){
  */
 bool T7Cursores::crearLista(QString c){
     int disponible = inicios[0];
+    if(disponible == -1)//detener si ya está lleno
+        return false;
+
     int newInicioPos = getInicioVacio();
 
     if(newInicioPos != -1){
@@ -102,17 +105,19 @@ bool T7Cursores::crearLista(QString c){
  */
 bool T7Cursores::agregar(int lista, QString c){
     if(inicios[0] != -1){
-        int x = inicios[lista];
+        int x = inicios[lista];//obtenemos la posición de la lista
         while(espacios[x].siguiente != -1)
             x = espacios[x].siguiente;
+        cout<<"X: "<<x<<endl;
 
-        int y = inicios[0];
+        int y = inicios[0];//obtenemos la posición que tiene disponibles
+        cout<<"Y: "<<y<<endl;
         espacios[x].siguiente = y;
         espacios[y].valor = c;
 
         inicios[0] = espacios[y].siguiente;
         espacios[y].siguiente = -1;
-
+        cout<<"Inicio: "<<inicios[0]<<endl;
         //Actualizar valores
         valores[x] = c + " ";
         return true;
@@ -242,6 +247,29 @@ void T7Cursores::showFullMsg(){
     qM.exec();
 }
 
+bool T7Cursores::validarListaDisponibles(){
+    if(ui->tLista->text().toInt() == 0){
+        QMessageBox qM;
+        qM.setText("No puede ingresar o eliminar valores en la lista de disponibles.");
+        return true;
+    }
+
+    return false;
+}
+
+/***BOTONES***/
+
+void T7Cursores::printPruebas(){
+    cout<<endl<<"LISTAS:"<<endl;
+    for(int i = 0; i < SIZE_LISTAS; i++)
+        cout<<"Pos: "<<i<<" con valor: "<<espacios[i].valor.toStdString()<<" con su siguiente: "<<espacios[i].siguiente<<endl;
+
+    cout<<endl<<endl<<"INICIOS:"<<endl;
+
+    for(int i = 0; i < SIZE_LISTAS; i++)
+        cout<<"Pos: "<<i<<" con su siguiente: "<<inicios[i]<<endl;
+}
+
 void T7Cursores::on_bCrear_clicked()
 {
     QString q = obtenerValor();
@@ -253,6 +281,8 @@ void T7Cursores::on_bCrear_clicked()
         actualizarLabelListas();
     else
         showFullMsg();
+
+    printPruebas();
 }
 
 void T7Cursores::on_bAgregar_clicked()
@@ -262,12 +292,19 @@ void T7Cursores::on_bAgregar_clicked()
         return;
 
     int lista = ui->tLista->text().toInt();
+    if(validarListaDisponibles())
+        return;
+
     ui->tLista->clear();
 
     if(agregar(lista, q))
         actualizarLabelListas();
     else
         showFullMsg();
+
+    cout<<"*****AGREGAR: "<<endl;
+
+    printPruebas();
 }
 
 void T7Cursores::on_bInsertar_clicked()
@@ -281,6 +318,9 @@ void T7Cursores::on_bInsertar_clicked()
     ui->tPosicion->clear();
 
     int lista = ui->tLista->text().toInt();
+    if(validarListaDisponibles())
+        return;
+
     ui->tLista->clear();
 
     if(insertar(lista, pos, q))
@@ -297,6 +337,9 @@ void T7Cursores::on_bEliminar_clicked()
         return;
 
     int lista = ui->tLista->text().toInt();
+    if(validarListaDisponibles())
+        return;
+
     ui->tLista->clear();
 
     if(eliminar(lista, q))
