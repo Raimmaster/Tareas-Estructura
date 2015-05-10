@@ -124,7 +124,7 @@ bool T7Cursores::agregar(int lista, QString c){
     return false;
 }
 
-int  T7Cursores::buscar(int lista, QString c){
+int T7Cursores::buscar(int lista, QString c){
     if(inicios[lista] != -1){
         int x = inicios[lista];//posición inicial de la lista
         while(espacios[x].valor != c && espacios[x].siguiente != -1)
@@ -143,28 +143,30 @@ int  T7Cursores::buscar(int lista, QString c){
  * @param pos - Posición donde insertar
  * @param c - Valor a insertar
  */
-bool T7Cursores::insertar(int lista, int pos, QString c){
+bool T7Cursores::insertar(int lista, QString pos, QString c){
     int x = inicios[0];
     if (x == -1)//Si está llena, simplemente retornar false
         return false;
 
-    if(pos >= 0 && pos < SIZE_LISTAS){
-        if(pos == inicios[lista] && espacios[pos].siguiente == -1){
+    int insertarAntes = buscar(lista, pos);
+
+    if(insertarAntes != 1){
+        if(insertarAntes == inicios[lista] && espacios[insertarAntes].siguiente == -1){
             inicios[0] = espacios[x].siguiente;//le setteamos el siguiente del espacio disponible actual
             espacios[x].valor = c; //en este espacio agregamos el valor            
             espacios[x].siguiente = inicios[lista];//le damos como siguiente el inicio de la lista
             inicios[lista] = x;//y setteamos como el inicio la posición del nuevo
-        }else if(espacios[pos].siguiente == -1)//si el siguiente de la posición a ingresar es -1, entonces agregar
+        }else if(espacios[insertarAntes].siguiente == -1)//si el siguiente de la posición a ingresar es -1, entonces agregar
             agregar(lista, c);
         else{//no es el inicio, ni es el final
             inicios[0] = espacios[x].siguiente;
             espacios[x].valor = c;
-            espacios[x].siguiente = espacios[pos].siguiente;
-            espacios[pos].siguiente = x;
+            espacios[x].siguiente = espacios[insertarAntes].siguiente;
+            espacios[insertarAntes].siguiente = x;
         }
 
         //Actualizar valores
-        valores[x] = c;
+        valores[x] = c + " ";
         return true;
     }
 
@@ -179,7 +181,6 @@ void T7Cursores::agregarEspacio(int pos){
     int currentLibre = inicios[0];
     inicios[0] = pos;
     espacios[pos].siguiente = currentLibre;
-    cout<<"Espacio libre: "<<pos<<" ahora seguido por: "<<currentLibre<<endl;
 }
 
 /**
@@ -314,7 +315,7 @@ void T7Cursores::on_bInsertar_clicked()
     if(q.isEmpty() || ui->tLista->text().isEmpty() || ui->tPosicion->text().isEmpty())
         return;
 
-    int pos = ui->tPosicion->text().toInt();
+    QString pos = ui->tPosicion->text();
     ui->tPosicion->clear();
 
     int lista = ui->tLista->text().toInt();

@@ -23,7 +23,7 @@ class T7Cursores : public QDialog
         bool crearLista(QString c);
         bool agregar(int lista, QString c);
         int buscar(int lista, QString c);
-        bool insertar(int lista, int pos, QString c);
+        bool insertar(int lista, QString pos, QString c);
         int getAnterior(int lista, int pos);
         void agregarEspacio(int pos);//parámetro es la posición a vaciar
         bool eliminar(int lista, QString c);
