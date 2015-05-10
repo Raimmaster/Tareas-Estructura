@@ -108,18 +108,16 @@ bool T7Cursores::agregar(int lista, QString c){
         int x = inicios[lista];//obtenemos la posición de la lista
         while(espacios[x].siguiente != -1)
             x = espacios[x].siguiente;
-        cout<<"X: "<<x<<endl;
 
         int y = inicios[0];//obtenemos la posición que tiene disponibles
-        cout<<"Y: "<<y<<endl;
+
         espacios[x].siguiente = y;
         espacios[y].valor = c;
 
         inicios[0] = espacios[y].siguiente;
         espacios[y].siguiente = -1;
-        cout<<"Inicio: "<<inicios[0]<<endl;
         //Actualizar valores
-        valores[x] = c + " ";
+        valores[y] = c + " ";
         return true;
     }
 
