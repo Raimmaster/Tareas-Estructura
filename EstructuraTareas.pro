@@ -24,7 +24,9 @@ SOURCES += main.cpp\
     T6/Nodo.cpp \
     T5/T5Colas.cpp \
     T7/T7Cursores.cpp \
-    T7/CNodo.cpp
+    T7/CNodo.cpp \
+    T8/Conjunto.cpp \
+    T8/T8Conjuntos.cpp
 
 HEADERS  += mainwindow.h \
     T1/calle.h \
@@ -37,7 +39,9 @@ HEADERS  += mainwindow.h \
     T6/Nodo.h \
     T5/T5Colas.h \
     T7/T7Cursores.h \
-    T7/CNodo.h
+    T7/CNodo.h \
+    T8/Conjunto.h \
+    T8/T8Conjuntos.h
 
 FORMS    += mainwindow.ui \
     T1/t1semaforo.ui \    
@@ -46,4 +50,5 @@ FORMS    += mainwindow.ui \
     T4/t4apuntadores.ui \
     T6/T6Pilas.ui \
     T5/T5Colas.ui \
-    T7/T7Cursores.ui
+    T7/T7Cursores.ui \
+    T8/T8Conjuntos.ui
