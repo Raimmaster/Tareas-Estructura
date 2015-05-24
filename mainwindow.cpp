@@ -7,6 +7,7 @@
 #include "T5/T5Colas.h"
 #include "T6/T6Pilas.h"
 #include "T7/T7Cursores.h"
+#include "T8/T8Conjuntos.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -66,6 +67,13 @@ void MainWindow::on_bT5_clicked()
 void MainWindow::on_bT7_clicked()
 {
     T7Cursores t;
+    t.setModal(true);
+    t.exec();
+}
+
+void MainWindow::on_bT8_clicked()
+{
+    T8Conjuntos t;
     t.setModal(true);
     t.exec();
 }
