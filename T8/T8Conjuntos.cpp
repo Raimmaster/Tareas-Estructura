@@ -49,7 +49,28 @@ void T8Conjuntos::conjuntoUnion(){
 }
 
 void T8Conjuntos::diferencia(){
+    resetActuales();
+    conC.clear();
+    while(conB.actual){
+        if(!conA.actual){
+            conC.push_back(conB.actual->num);
+            conB.actual = conB.actual->siguiente;
+            continue;
+        }
 
+        if(conA.actual->num == conB.actual->num){
+            conA.actual = conA.actual->siguiente;
+            conB.actual = conB.actual->siguiente;
+        }
+
+        if(conA.actual->num > conB.actual->num){//si A es mayor, agregar B
+            conC.push_back(conB.actual->num);
+            conB.actual = conB.actual->siguiente;
+        }
+
+        if(conA.actual->num < conB.actual->num)
+            conA.actual = conA.actual->siguiente;
+    }
 }
 
 void T8Conjuntos::interseccion(){
@@ -94,14 +115,23 @@ void T8Conjuntos::on_bInsertar_clicked()
     }
 }
 
-void T8Conjuntos::on_bUnion_clicked()
-{
-    conjuntoUnion();
+void T8Conjuntos::fillLwC(){
     ui->lwC->clear();
 
-    for(int i = 0; i < conC.size(); i++){
+    for(unsigned int i = 0; i < conC.size(); i++){
         QString item = QString("%1").arg(conC[i]);
         ui->lwC->addItem(item);
     }
+}
 
+void T8Conjuntos::on_bUnion_clicked()
+{
+    conjuntoUnion();
+    fillLwC();
+}
+
+void T8Conjuntos::on_bDiferencia_clicked()
+{
+    diferencia();
+    fillLwC();
 }

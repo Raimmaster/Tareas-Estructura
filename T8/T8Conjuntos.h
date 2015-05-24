@@ -29,9 +29,12 @@ private slots:
 
     void on_bUnion_clicked();
 
+    void on_bDiferencia_clicked();
+
 private:
     Conjunto conA, conB;
     vector<int> conC;
+    void fillLwC();
     Ui::T8Conjuntos *ui;
 };
 
