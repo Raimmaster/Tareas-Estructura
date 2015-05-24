@@ -19,6 +19,11 @@ Cartas* Conjunto::buscar(int num){
     return NULL;
 }
 
+/**
+ * @brief Conjunto::insertar - Inserta un nuovo nodo al conjunto
+ * @param num - El número a insertar, si se permite
+ * @return true si se pudo insertar
+ */
 bool Conjunto::insertar(int num){
     actual = inicio;
 
@@ -47,7 +52,6 @@ bool Conjunto::insertar(int num){
 
             return true;
         }
-
 
         actual = actual->siguiente;
     }

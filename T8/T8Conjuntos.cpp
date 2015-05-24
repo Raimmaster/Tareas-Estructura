@@ -21,6 +21,18 @@ void T8Conjuntos::resetActuales(){
 void T8Conjuntos::conjuntoUnion(){
     resetActuales();
     while(conA.actual || conB.actual){
+        if(!conA.actual){//si el conA ha llegado a su fin
+            conC.push_back(conB.actual->num);
+            conB.actual = conB.actual->siguiente;
+            continue;
+        }
+
+        if(!conB.actual){//si el conB ha llegado a su fin
+            conC.push_back(conA.actual->num);
+            conA.actual = conA.actual->siguiente;
+            continue;
+        }
+
         if(conA.actual->num < conB.actual->num){//Si el objeto de con A es menor
             conC.push_back(conA.actual->num);
             conA.actual = conA.actual->siguiente;
@@ -65,7 +77,9 @@ void T8Conjuntos::on_bUnion_clicked()
     conjuntoUnion();
     ui->lwC->clear();
     for(int i = 0; i < conC.size(); i++){
-        QString item = QString(conC[i]);
+        QString item = QString("%1").arg(conC[i]);
+        cout<<item.toStdString()<<endl;
+        cout<<conC[i]<<" - "<<endl;
         ui->lwC->addItem(item);
     }
 
