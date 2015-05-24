@@ -34,18 +34,26 @@ bool Conjunto::insertar(int num){
     while(actual->siguiente){
         if(actual->siguiente->num == num)
             return false;
-        else if(actual->siguiente->num <= num)
-            break;
+
+        if(actual->siguiente->num < num && actual->siguiente->siguiente
+                && actual->siguiente->siguiente->num > num){
+
+            Cartas* nuovo = new Cartas(num);//4
+            nuovo->siguiente = actual->siguiente->siguiente;//4's next is 5
+            actual->siguiente = nuovo;//3's next is 4
+
+            if(inicio->num > nuovo->num)
+                inicio = nuovo;//reset inicio si se ha desplazado
+
+            return true;
+        }
+
 
         actual = actual->siguiente;
     }
 
-    Cartas* nuovo = new Cartas(num);
-    nuovo->siguiente = actual->siguiente;
+    Cartas* nuovo = new Cartas(num);//4
     actual->siguiente = nuovo;
-
-    if(inicio->num > nuovo->num)
-        inicio = nuovo;
 
     return true;
 }

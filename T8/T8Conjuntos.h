@@ -27,6 +27,8 @@ public:
 private slots:
     void on_bInsertar_clicked();
 
+    void on_bUnion_clicked();
+
 private:
     Conjunto conA, conB;
     vector<int> conC;

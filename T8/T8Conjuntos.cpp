@@ -59,3 +59,14 @@ void T8Conjuntos::on_bInsertar_clicked()
     }
 }
 
+
+void T8Conjuntos::on_bUnion_clicked()
+{
+    conjuntoUnion();
+    ui->lwC->clear();
+    for(int i = 0; i < conC.size(); i++){
+        QString item = QString(conC[i]);
+        ui->lwC->addItem(item);
+    }
+
+}
