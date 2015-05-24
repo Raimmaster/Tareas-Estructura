@@ -48,6 +48,14 @@ void T8Conjuntos::conjuntoUnion(){
     }
 }
 
+void T8Conjuntos::diferencia(){
+
+}
+
+void T8Conjuntos::interseccion(){
+
+}
+
 void T8Conjuntos::on_bInsertar_clicked()
 {
     if(ui->lNum->text().isEmpty() || ui->tConjunto->text().isEmpty())
@@ -61,13 +69,27 @@ void T8Conjuntos::on_bInsertar_clicked()
     ui->tConjunto->clear();
 
     switch(opcion){
-        case 0:
-            if(conA.insertar(num))
-                ui->lwA->addItem(item);
+        case 0:        
+            if(conA.insertar(num)){
+                ui->lwA->clear();
+                resetActuales();
+                while(conA.actual){
+                    ui->lwA->addItem((QString("%1").arg(conA.actual->num)));
+                    conA.actual = conA.actual->siguiente;
+                }
+            }
+//                ui->lwA->addItem(item);
         break;
-        case 1:
-            if(conB.insertar(num))
-                ui->lwB->addItem(item);
+        case 1:            
+            if(conB.insertar(num)){
+                ui->lwB->clear();
+                resetActuales();
+                while(conB.actual){
+                    ui->lwB->addItem((QString("%1").arg(conB.actual->num)));
+                    conB.actual = conB.actual->siguiente;
+                }
+            }
+//                ui->lwB->addItem(item);
         break;
     }
 }
