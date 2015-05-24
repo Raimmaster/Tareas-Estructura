@@ -27,29 +27,33 @@ Cartas* Conjunto::buscar(int num){
 bool Conjunto::insertar(int num){
     actual = inicio;
 
-    if(!actual){
+    if(!actual){//si el inicio está vacío, llenarlo
         actual = new Cartas(num);
         inicio = actual;
         return true;
     }
 
-    if(actual->num == num)
+    if(actual->num == num)//si es igual al inicio, retornar
         return false;
+
+    if(num < actual->num){
+        Cartas* nuovo = new Cartas(num);
+        nuovo->siguiente = actual;
+        inicio = nuovo;
+
+        return true;
+    }
 
     while(actual->siguiente){
         if(actual->siguiente->num == num)
             return false;
 
-        if(actual->siguiente->num < num && actual->siguiente->siguiente
-                && actual->siguiente->siguiente->num > num){
+        if(actual->num < num && actual->siguiente
+                && actual->siguiente->num > num){
 
             Cartas* nuovo = new Cartas(num);//4
-            nuovo->siguiente = actual->siguiente->siguiente;//4's next is 5
+            nuovo->siguiente = actual->siguiente;//4's next is 5
             actual->siguiente = nuovo;//3's next is 4
-
-            if(inicio->num > nuovo->num)
-                inicio = nuovo;//reset inicio si se ha desplazado
-
             return true;
         }
 

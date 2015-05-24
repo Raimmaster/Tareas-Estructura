@@ -20,6 +20,7 @@ void T8Conjuntos::resetActuales(){
 
 void T8Conjuntos::conjuntoUnion(){
     resetActuales();
+    conC.clear();
     while(conA.actual || conB.actual){
         if(!conA.actual){//si el conA ha llegado a su fin
             conC.push_back(conB.actual->num);
@@ -71,15 +72,13 @@ void T8Conjuntos::on_bInsertar_clicked()
     }
 }
 
-
 void T8Conjuntos::on_bUnion_clicked()
 {
     conjuntoUnion();
     ui->lwC->clear();
+
     for(int i = 0; i < conC.size(); i++){
         QString item = QString("%1").arg(conC[i]);
-        cout<<item.toStdString()<<endl;
-        cout<<conC[i]<<" - "<<endl;
         ui->lwC->addItem(item);
     }
 
