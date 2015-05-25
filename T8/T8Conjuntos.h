@@ -31,6 +31,8 @@ private slots:
 
     void on_bDiferencia_clicked();
 
+    void on_bInterseccion_clicked();
+
 private:
     Conjunto conA, conB;
     vector<int> conC;

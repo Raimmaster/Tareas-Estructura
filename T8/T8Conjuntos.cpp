@@ -61,20 +61,30 @@ void T8Conjuntos::diferencia(){
         if(conA.actual->num == conB.actual->num){
             conA.actual = conA.actual->siguiente;
             conB.actual = conB.actual->siguiente;
-        }
-
-        if(conA.actual->num > conB.actual->num){//si A es mayor, agregar B
+        }else if(conA.actual->num > conB.actual->num){//si A es mayor, agregar B
             conC.push_back(conB.actual->num);
             conB.actual = conB.actual->siguiente;
-        }
-
-        if(conA.actual->num < conB.actual->num)
+        }else if(conA.actual->num < conB.actual->num)
             conA.actual = conA.actual->siguiente;
     }
 }
 
 void T8Conjuntos::interseccion(){
+    resetActuales();
+    conC.clear();
+    while(conA.actual && conB.actual){
+        if(conA.actual->num > conB.actual->num)
+            conB.actual = conB.actual->siguiente;
 
+        if(conB.actual->num > conA.actual->num)
+            conA.actual = conA.actual->siguiente;
+
+        if(conA.actual->num == conB.actual->num){
+            conC.push_back(conA.actual->num);
+            conA.actual = conA.actual->siguiente;
+            conB.actual = conB.actual->siguiente;
+        }
+    }
 }
 
 void T8Conjuntos::on_bInsertar_clicked()
@@ -133,5 +143,11 @@ void T8Conjuntos::on_bUnion_clicked()
 void T8Conjuntos::on_bDiferencia_clicked()
 {
     diferencia();
+    fillLwC();
+}
+
+void T8Conjuntos::on_bInterseccion_clicked()
+{
+    interseccion();
     fillLwC();
 }
