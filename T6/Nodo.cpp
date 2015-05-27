@@ -1,6 +1,6 @@
 #include "Nodo.h"
 
-Nodo::Nodo(QString valor)
+Nodo::Nodo(Tipo valor)
 {
     this->valor = valor;
     this->anterior = NULL;

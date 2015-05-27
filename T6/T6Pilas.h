@@ -14,8 +14,8 @@ class T6Pilas : public QDialog
 
 public:    
     explicit T6Pilas(QWidget *parent = 0);
-    Nodo* getTope();
-    void meter(Nodo* obj);
+    Nodo<QString>* getTope();
+    void meter(Nodo<QString>* obj);
     bool sacar();
     bool isEmpty();
     void anular();
@@ -34,7 +34,7 @@ private slots:
 
 private:
     Ui::T6Pilas *ui;
-    Nodo* tope = NULL;
+    Nodo<QString>* tope = NULL;
 };
 
 #endif // T6PILAS_H

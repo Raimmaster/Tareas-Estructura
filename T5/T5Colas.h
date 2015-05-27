@@ -13,12 +13,12 @@ class T5Colas : public QDialog
     Q_OBJECT
 
 public:
-    Nodo* frente = NULL;
-    Nodo* ultimo = NULL;
-    Nodo* getFrente();
+    Nodo<QString>* frente = NULL;
+    Nodo<QString>* ultimo = NULL;
+    Nodo<QString>* getFrente();
     void anular();
     bool isEmpty();
-    void ponerEnCola(Nodo* n);
+    void ponerEnCola(Nodo<QString>* n);
     bool quitarDeCola();
     explicit T5Colas(QWidget *parent = 0);
     ~T5Colas();

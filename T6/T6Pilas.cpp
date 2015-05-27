@@ -18,7 +18,7 @@ T6Pilas::~T6Pilas()
  * @brief T6Pilas::getTope - Obtiene un apuntador del objeto al tope del stack
  * @return El apuntador al tope
  */
-Nodo* T6Pilas::getTope(){
+Nodo<QString>* T6Pilas::getTope(){
     return tope;
 }
 
@@ -26,7 +26,7 @@ Nodo* T6Pilas::getTope(){
  * @brief T6Pilas::meter - Inserta un nuevo nodo a la pila
  * @param obj - El apuntador al nodo a insertar
  */
-void T6Pilas::meter(Nodo *obj){
+void T6Pilas::meter(Nodo<QString> *obj){
     if(tope)
         obj->anterior = tope;
 
@@ -39,7 +39,7 @@ void T6Pilas::meter(Nodo *obj){
  */
 bool T6Pilas::sacar(){
     if(tope){
-        Nodo* t = tope;
+        Nodo<QString>* t = tope;
         tope = tope->anterior;
         delete t;
         return true;
@@ -70,7 +70,7 @@ void T6Pilas::on_bAgregar_clicked()
 {
     QString q = ui->lValor->text();
     if(!q.isEmpty()){
-       Nodo* n = new Nodo(q);
+       Nodo<QString>* n = new Nodo<QString>(q);
        meter(n);
     }
     ui->lValor->clear();
@@ -83,7 +83,7 @@ void T6Pilas::on_bSacar_clicked()
 
 void T6Pilas::on_bTope_clicked()
 {
-    Nodo* n = getTope();
+    Nodo<QString>* n = getTope();
     if(n){
         QString q = ("El tope es: ");
         q += n->valor;

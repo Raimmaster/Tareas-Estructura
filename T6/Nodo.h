@@ -2,12 +2,13 @@
 #define NODO_H
 #include <qstring.h>
 
+template <typename Tipo>
 class Nodo
 {
 public:
-    QString valor;
+    Tipo valor;
     Nodo* anterior;
-    Nodo(QString valor);
+    Nodo(Tipo valor);
 };
 
 #endif // NODO_H
