@@ -34,6 +34,8 @@ private slots:
 
     void on_bT9_clicked();
 
+    void on_bT10_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

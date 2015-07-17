@@ -27,7 +27,10 @@ SOURCES += main.cpp\
     T7/CNodo.cpp \
     T8/Conjunto.cpp \
     T8/T8Conjuntos.cpp \
-    T9/T9Hash.cpp
+    T9/T9Hash.cpp \
+    T10/ArbolBinario.cpp \
+    T10/Node.cpp \
+    T10/T10Arbol.cpp
 
 HEADERS  += mainwindow.h \
     T1/calle.h \
@@ -43,7 +46,10 @@ HEADERS  += mainwindow.h \
     T7/CNodo.h \
     T8/Conjunto.h \
     T8/T8Conjuntos.h \
-    T9/T9Hash.h
+    T9/T9Hash.h \
+    T10/ArbolBinario.h \
+    T10/Node.h \
+    T10/T10Arbol.h
 
 FORMS    += mainwindow.ui \
     T1/t1semaforo.ui \    
@@ -54,4 +60,5 @@ FORMS    += mainwindow.ui \
     T5/T5Colas.ui \
     T7/T7Cursores.ui \
     T8/T8Conjuntos.ui \
-    T9/T9Hash.ui
+    T9/T9Hash.ui \
+    T10/T10Arbol.ui

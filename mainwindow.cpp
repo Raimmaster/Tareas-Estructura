@@ -9,6 +9,7 @@
 #include "T7/T7Cursores.h"
 #include "T8/T8Conjuntos.h"
 #include "T9/T9Hash.h"
+#include "T10/T10Arbol.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -82,6 +83,13 @@ void MainWindow::on_bT8_clicked()
 void MainWindow::on_bT9_clicked()
 {
     T9Hash t;
+    t.setModal(true);
+    t.exec();
+}
+
+void MainWindow::on_bT10_clicked()
+{
+    T10Arbol t;
     t.setModal(true);
     t.exec();
 }
